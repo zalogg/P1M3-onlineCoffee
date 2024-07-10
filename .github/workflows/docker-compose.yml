@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: ./order-service
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/order-service:latest
 
@@ -45,4 +45,4 @@ jobs:
               docker pull ${{ secrets.DOCKER_USERNAME }}/order-service:latest
               docker stop order-service || true
               docker rm order-service || true
-              docker run -d --name order-service -p 3001:3001 ${{ secrets.DOCKER_USERNAME }}/order-service:latest
+              docker run -d --name order-service -p 3003:3003 ${{ secrets.DOCKER_USERNAME }}/order-service:latest
